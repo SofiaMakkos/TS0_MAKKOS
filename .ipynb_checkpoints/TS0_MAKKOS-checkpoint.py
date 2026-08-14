@@ -25,6 +25,7 @@ def mi_funcion_sen( vmax = 1, dc = 0, ff = 1, ph=0, nn = N, fs = fs):
 
 vmax=2
 dc=0
+ff=5
 ph=0
 
 
@@ -50,16 +51,6 @@ plt.show()
 
 tt,xx=mi_funcion_sen(ff=1001)
 plt.plot(tt, xx, color="purple", linestyle=" ",marker=".", label="Funcion seno, 1001Hz")
-plt.legend(loc="upper right")
-plt.xlabel("Tiempo (t)")
-plt.ylabel("Amplitud (V)")
-plt.axhline(0, color="black", linewidth=1)
-plt.axvline(0, color="black", linewidth=1)
-plt.grid()
-plt.show()
-
-tt,xx=mi_funcion_sen(ff=10)
-plt.plot(tt, xx, color="pink", linestyle=" ",marker=".", label="Funcion seno, randomHz")
 plt.legend(loc="upper right")
 plt.xlabel("Tiempo (t)")
 plt.ylabel("Amplitud (V)")
