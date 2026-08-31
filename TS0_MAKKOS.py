@@ -27,7 +27,6 @@ vmax=2
 dc=0
 ph=0
 
-
 tt,xx=mi_funcion_sen(ff=500)
 plt.plot(tt, xx, color="blue", linestyle=" ",marker=".",  label="Funcion seno, 500Hz")
 plt.legend(loc="upper right")
