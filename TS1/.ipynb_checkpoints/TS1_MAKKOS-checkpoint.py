@@ -9,6 +9,7 @@ import numpy as np
 from scipy.fft import fft, fftfreq
 from scipy.signal import square
 import matplotlib.pyplot as plt
+
 N=1000
 #%% Señal sinusoidal de 2 KHz que tenga al menos 10 puntos por período.
 """
@@ -37,12 +38,6 @@ plt.figure(2)
 plt.plot(freq,fftxx_abs, ":.")
 plt.title("Modulo FFT seno (2Khz)")
 
-ref=np.max(fftxx_abs)
-fftxx_abs_dB=20*np.log10(fftxx_abs/ref)
-
-plt.figure(3)
-plt.plot(freq, fftxx_abs_dB, ":.")
-plt.title("Seno en dB  (2kHz)")
 """
 #%% Misma señal con 2 W de potencia media y desfasada en π/2.
 """
@@ -64,21 +59,15 @@ freq = freq[:N//2]
 
 fftxx_abs = np.abs(fftxx)
 
-plt.figure(4)
+plt.figure(3)
 plt.plot(tt[:10],xx[:10], ":.")
 plt.title("Función seno (2W)")
    
-plt.figure(5)
+plt.figure(4)
 plt.plot(freq,fftxx_abs, ":.")
 plt.title("Modulo FFT seno (2W)")
-
-ref=np.max(fftxx_abs)
-fftxx_abs_dB=20*np.log10(fftxx_abs/ref)
-
-plt.figure(6)
-plt.plot(freq, fftxx_abs_dB, ":.")
-plt.title("Seno en dB  (2kHz, 2W)")
 """
+
 
 #%% Una secuencia aleatoria de ruido normalmente distribuido con DC (valor medio) 0V y varianza 0.1 W.
 """
@@ -88,7 +77,7 @@ norm=np.random.normal(scale=np.sqrt(0.1),size=len(tt))
 pnorm=np.var(norm)
 
 print(pnorm)
-plt.figure(7)
+plt.figure(5)
 plt.plot(tt, norm)
 plt.title("Distribución normal con 0,1W")
 
@@ -98,16 +87,9 @@ fftnorm_abs = np.abs(fftnorm)
 freq = fftfreq(N,1/fs)
 freq = freq[:N//2]
 
-plt.figure(8)
+plt.figure(6)
 plt.plot(freq,fftnorm_abs, ":.")
 plt.title("Módulo FFT Distribución normal con 0,1W")
-
-ref=np.max(fftnorm_abs)
-fftxx_abs_dB=20*np.log10(fftnorm_abs/ref)
-
-plt.figure(9)
-plt.plot(freq, fftxx_abs_dB, ":.")
-plt.title("Distribución normal en dB  (0,1W)")
 """
 #%% Una secuencia aleatoria de ruido uniformemente distribuido con DC (valor medio) 0V y varianza 0.1 W. 
 """
@@ -124,7 +106,7 @@ unif=np.random.uniform(low=a,high=b,size=len(tt))
 varuniform=np.var(unif)
 print(a,b,varuniform)
 
-plt.figure(10)
+plt.figure(7)
 plt.plot(unif)
 plt.title("Distribución uniforme con 0,1W")
 
@@ -134,25 +116,18 @@ fftunif_abs = np.abs(fftunif)
 freq = fftfreq(N,1/fs)
 freq = freq[:N//2]
 
-plt.figure(11)
+plt.figure(8)
 plt.plot(freq,fftunif_abs, ":.")
 plt.title("Módulo FFT Distribución uniforme con 0,1W")
-
-ref=np.max(fftunif_abs)
-fftxx_abs_dB=20*np.log10(fftunif_abs/ref)
-
-plt.figure(12)
-plt.plot(freq, fftxx_abs_dB, ":.")
-plt.title("Distribución uniforme en dB  (0,1W)")
 """
 #%% Un pulso rectangular de la misma frecuencia, 1 W de potencia y ciclo de actividad del 50% (Ver scipy.signal apartado Waveforms).
-
+"""
 fs=20000
 tt=np.arange(0,N/fs, 1/fs)
 cuadr=((square(tt*2*np.pi*2000, duty=0.5)+1)/2)*np.sqrt((2))
 pot=np.mean(cuadr**2)
 
-plt.figure(13)
+plt.figure(9)
 plt.plot(tt[:50], cuadr[:50])
 plt.title("Señal cuadrada 1W")
 
@@ -162,17 +137,9 @@ fftcuadr_abs = np.abs(fftcuadr)
 freq = fftfreq(N,1/fs)
 freq = freq[:N//2]
 
-plt.figure(14)
+plt.figure(8)
 plt.plot(freq,fftcuadr_abs, ":.")
 plt.title("Módulo FFT Señal cuadrada con 1W")
-
-ref=np.max(fftcuadr_abs)
-
-ref=np.max(fftcuadr_abs)
-fftcuadr_abs_dB=20*np.log10(fftcuadr_abs/ref)
-
-plt.figure(12)
-plt.plot(freq, fftcuadr_abs_dB, ":.")
-plt.title("Señal cuadrada en dB  (0,1W)")
+"""
 
 plt.show()
