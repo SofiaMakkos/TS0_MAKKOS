@@ -11,14 +11,15 @@ from scipy.signal import square
 import matplotlib.pyplot as plt
 N=1000
 #%% Señal sinusoidal de 2 KHz que tenga al menos 10 puntos por período.
-"""
 fs=20000
 
-def mi_funcion_sen( vmax = 1, dc = 0, ff = 1, ph=0, nn = N, fs = fs):
+def mi_funcion_sen( vmax = np.sqrt(2), dc = 0, ff = 1, ph=0, nn = N, fs = fs):
     tt=np.arange(0.0, N/fs, 1/fs)
     xx=vmax*np.sin(2*np.pi*ff*tt +ph)+dc
     return(tt, xx)
 tt, xx= mi_funcion_sen(ff=2000)
+
+potxx=np.var(xx)
 
 fftxx = fft(xx)
 fftxx = fftxx[:N//2]
@@ -30,20 +31,20 @@ freq = freq[:N//2]
 fftxx_abs = np.abs(fftxx)
 
 plt.figure(1)
-plt.plot(tt[:10],xx[:10], ":.")
+plt.plot(tt[:10],xx[:10], ":.", color="red")
 plt.title("Función seno (2Khz)")
    
 plt.figure(2)
-plt.plot(freq,fftxx_abs, ":.")
+plt.plot(freq,fftxx_abs, ":.", color="red")
 plt.title("Modulo FFT seno (2Khz)")
 
 ref=np.max(fftxx_abs)
 fftxx_abs_dB=20*np.log10(fftxx_abs/ref)
 
 plt.figure(3)
-plt.plot(freq, fftxx_abs_dB, ":.")
+plt.plot(freq, fftxx_abs_dB, ":.", color="red")
 plt.title("Seno en dB  (2kHz)")
-"""
+
 #%% Misma señal con 2 W de potencia media y desfasada en π/2.
 """
 fs=20000
@@ -72,8 +73,8 @@ plt.figure(5)
 plt.plot(freq,fftxx_abs, ":.")
 plt.title("Modulo FFT seno (2W)")
 
-ref=np.max(fftxx_abs)
 fftxx_abs_dB=20*np.log10(fftxx_abs/ref)
+print(fftxx_abs_dB[freq==2000])
 
 plt.figure(6)
 plt.plot(freq, fftxx_abs_dB, ":.")
@@ -87,7 +88,6 @@ fs=1000
 norm=np.random.normal(scale=np.sqrt(0.1),size=len(tt))
 pnorm=np.var(norm)
 
-print(pnorm)
 plt.figure(7)
 plt.plot(tt, norm)
 plt.title("Distribución normal con 0,1W")
@@ -145,6 +145,7 @@ plt.figure(12)
 plt.plot(freq, fftxx_abs_dB, ":.")
 plt.title("Distribución uniforme en dB  (0,1W)")
 """
+
 #%% Un pulso rectangular de la misma frecuencia, 1 W de potencia y ciclo de actividad del 50% (Ver scipy.signal apartado Waveforms).
 
 fs=20000
