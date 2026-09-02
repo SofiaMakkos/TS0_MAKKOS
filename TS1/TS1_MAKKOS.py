@@ -7,7 +7,7 @@ Created on Sun Aug 30 18:36:14 2026
 #%% imports
 import numpy as np
 from scipy.fft import fft, fftfreq
-from scipy.signal import square
+from scipy.signal import square, sawtooth
 import matplotlib.pyplot as plt
 N=1000
 #%% Señal sinusoidal de 2 KHz que tenga al menos 10 puntos por período.
@@ -40,6 +40,8 @@ plt.title("Modulo FFT seno (2Khz)")
 
 ref=np.max(fftxx_abs)
 fftxx_abs_dB=20*np.log10(fftxx_abs/ref)
+print(ref)
+
 
 plt.figure(3)
 plt.plot(freq, fftxx_abs_dB, ":.", color="red")
@@ -101,13 +103,13 @@ freq = freq[:N//2]
 plt.figure(8)
 plt.plot(freq,fftnorm_abs, ":.")
 plt.title("Módulo FFT Distribución normal con 0,1W")
-
-ref=np.max(fftnorm_abs)
-fftxx_abs_dB=20*np.log10(fftnorm_abs/ref)
-
+print(ref)
+fftnorm_abs_dB=20*np.log10(fftnorm_abs/ref)
+print(np.log10(1))
 plt.figure(9)
-plt.plot(freq, fftxx_abs_dB, ":.")
+plt.plot(freq, fftnorm_abs_dB, ":.")
 plt.title("Distribución normal en dB  (0,1W)")
+
 """
 #%% Una secuencia aleatoria de ruido uniformemente distribuido con DC (valor medio) 0V y varianza 0.1 W. 
 """
@@ -138,16 +140,15 @@ plt.figure(11)
 plt.plot(freq,fftunif_abs, ":.")
 plt.title("Módulo FFT Distribución uniforme con 0,1W")
 
-ref=np.max(fftunif_abs)
-fftxx_abs_dB=20*np.log10(fftunif_abs/ref)
+fftunif_abs_dB=20*np.log10(fftunif_abs/ref)
 
 plt.figure(12)
-plt.plot(freq, fftxx_abs_dB, ":.")
+plt.plot(freq, fftunif_abs_dB, ":.")
 plt.title("Distribución uniforme en dB  (0,1W)")
 """
 
 #%% Un pulso rectangular de la misma frecuencia, 1 W de potencia y ciclo de actividad del 50% (Ver scipy.signal apartado Waveforms).
-
+"""
 fs=20000
 tt=np.arange(0,N/fs, 1/fs)
 cuadr=((square(tt*2*np.pi*2000, duty=0.5)+1)/2)*np.sqrt((2))
@@ -167,13 +168,36 @@ plt.figure(14)
 plt.plot(freq,fftcuadr_abs, ":.")
 plt.title("Módulo FFT Señal cuadrada con 1W")
 
-ref=np.max(fftcuadr_abs)
-
-ref=np.max(fftcuadr_abs)
 fftcuadr_abs_dB=20*np.log10(fftcuadr_abs/ref)
 
-plt.figure(12)
+plt.figure(15)
 plt.plot(freq, fftcuadr_abs_dB, ":.")
 plt.title("Señal cuadrada en dB  (0,1W)")
-
+"""
 plt.show()
+# %% Nueva señal: Diente de sierra
+
+fs=20000
+tt=np.arange(0,N/fs, 1/fs)
+saw=((sawtooth(tt*2*np.pi*2000, width=0.1)+1)/2)*np.sqrt((2))
+pot=np.mean(saw**2)
+
+plt.figure(16)
+plt.plot(tt[:50], saw[:50])
+plt.title("Señal Diente de sierra 1W")
+
+fftsaw = fft(saw)
+fftsaw = fftsaw[:N//2]
+fftsaw_abs = np.abs(fftsaw)
+freq = fftfreq(N,1/fs)
+freq = freq[:N//2]
+
+plt.figure(17)
+plt.plot(freq,fftsaw_abs, ":.")
+plt.title("Módulo FFT Señal diente de sierra con 1W")
+
+fftsaw_abs_dB=20*np.log10(fftsaw_abs/ref)
+
+plt.figure(18)
+plt.plot(freq, fftsaw_abs_dB, ":.")
+plt.title("Señal diente de sierra en dB  (0,1W)")
