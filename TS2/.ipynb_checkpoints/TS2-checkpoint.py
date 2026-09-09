@@ -59,19 +59,17 @@ def funcion_fft (xx):
     fftxx_abs = np.abs(fftxx)
     return fftxx_abs, freq
 
-# FFT y potencia de referencia de la suma del seno y la normal
 fftsn_abs, freq=funcion_fft(sn)
 ref = np.max(fftsn_abs)
+sn_fft_dB = 20 * np.log10(fftsn_abs/ref)
 
-# FFT y normalización de la suma cuantizada
 fftsn_cuant_abs, freq=funcion_fft(sn_cuantizada)
 sn_cuant_fft_dB = 20 * np.log10(fftsn_cuant_abs/ref)
 
-# FFT y normalización de la normal
 fftnorm_abs, freq=funcion_fft(norm)
 norm_fft_dB = 20 * np.log10(fftnorm_abs/ref)
 
-# # FFT y normalización del ruido de cuantización
+#Ruido de cuantización
 n_q = sn_cuantizada - sn
 fftn_q_abs, freq=funcion_fft(n_q)
 n_q_fft_dB = 20 * np.log10(fftn_q_abs/ref)
