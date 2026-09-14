@@ -1,0 +1,4 @@
+Correcciones del TS1:
+* Pasar por corrector el texto del Notebook
+* En los gráficos de la FFT dice Amplitud, eso no es correcto.
+* Revisar las etiquetas de los gráficos que hay una confusión entre tiempo y frecuencia.
