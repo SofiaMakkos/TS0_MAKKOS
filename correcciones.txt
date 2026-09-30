@@ -1,4 +1,19 @@
-Correcciones del TS1:
-* Pasar por corrector el texto del Notebook
-* En los gráficos de la FFT dice Amplitud, eso no es correcto.
-* Revisar las etiquetas de los gráficos que hay una confusión entre tiempo y frecuencia.
+Correcciones de las TSs
+
+* TS1: Análisis de Señales
+    * Pasar por corrector el texto del Notebook
+    * En los gráficos de la FFT dice Amplitud, eso no es correcto.
+    * Revisar las etiquetas de los gráficos que hay una confusión entre tiempo y frecuencia.
+
+* TS3: Desparramo Espectral
+    * Pasar por corrector el texto del Notebook, hay algunos errores de edición. 
+    * En los primeros tres gráficos donde dice FFT normalizada, en realidad es el módulo al cuadrado
+      de la FFT.
+    * En los tres gráficos que siguen dice Densidad Espectral de Potencia [V], creo que querés decir en 
+      veces. Pero en una parte del texto decís: Con el fin de observar las densidades de potencia de 
+      otra manera, se volverán a graficar, aunque en función del Voltaje, eso no es correcto.
+    * Los gráficos que le siguen tienen los mismos errores.
+    * Para el caso de zero padding hubiese sido más ilustrativo hacer un zoom, para que no se vea tan 
+      manchado el gráfico y se muestre mejor la sinc que aparece.
+    * Falta una mejor explicación de por qué aparecen estas sincs en el caso de zero padding (convolución 
+      en frecuencia).
