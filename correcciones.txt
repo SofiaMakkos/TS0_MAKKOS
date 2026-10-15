@@ -17,3 +17,11 @@ Correcciones de las TSs
       manchado el gráfico y se muestre mejor la sinc que aparece.
     * Falta una mejor explicación de por qué aparecen estas sincs en el caso de zero padding (convolución 
       en frecuencia).
+
+* TS4: Estimadores
+    * Hay un error en el eje vertical de los gráficos de los espectros, la densidad espectral de potencia no 
+      puede estar en un Volts.
+    * No quedó clara la conclusión. No se entiende qué quisiste decir en la siguiente oración: ¨La 
+      implementación de la ventana Hann aportó en la perspectiva mencionada, sobre un cambio progresivo entre 
+      las cuatro ventanas. Así, se contemplaron cuatro "niveles"¨.
+
