@@ -25,3 +25,14 @@ Correcciones de las TSs
       implementación de la ventana Hann aportó en la perspectiva mencionada, sobre un cambio progresivo entre 
       las cuatro ventanas. Así, se contemplaron cuatro "niveles"¨.
 
+* TS4: Estimación Espectral
+    * Falta justificación del uso de Welch para la estimación espectral, dado que en la consigna se proponen 
+      dos métodos más.
+    * En toda estimación, la varianza es de los valores que más nos importa y ninguna parte del Notebook 
+      encontré que la citaras. Ni en la estimación espectral, ni en la estimación del ancho de banda.
+    * En los gráficos de las señales en el dominio del tiempo, la etiqueta del eje vertical no es del todo 
+      correcta. Amplitud se refiere a los valores extremos de la señal. En este caso bastaba con poner x(t).
+    * De dónde sacaste las unidades en Volts de las señales en audio?
+    * En una parte del desarrollo y en la conclusión te referís a la autocorrelación, por ejemplo: "... se puede
+      apreciar cómo la autocorrelación juega un papel importante en los periodogramas." No veo que hayas 
+      calculado la autocorrelación. Blackman-Tukey usa el concepto de autocorrelación, no Welch. 
