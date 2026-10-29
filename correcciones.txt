@@ -36,3 +36,13 @@ Correcciones de las TSs
     * En una parte del desarrollo y en la conclusión te referís a la autocorrelación, por ejemplo: "... se puede
       apreciar cómo la autocorrelación juega un papel importante en los periodogramas." No veo que hayas 
       calculado la autocorrelación. Blackman-Tukey usa el concepto de autocorrelación, no Welch. 
+
+* TS6: Filtros Pasivos
+    * Falta más detalles en el análisis de los resultados obtenidos para cada filtro. Por ejemplo en el caso de la 
+      respuesta asintótica.
+    * En el segundo filtro falta indicar la pendiente de subida en unidades de dB/dec.
+    * Pasar el texto por un corrector.
+    * En la conclusión se dice: "Esto nos muestra que gracias a los comportamientos reactivos es posible realizar una 
+      amplificación de amplitud, aunque no así de potencia (algo similar a lo que sucede en un transformador)." 
+      Guarda! Tenés que explicar un poco más, porque la señal de salida (en la frecuencia de resonancia) sí tiene más 
+      potencia que la señal de entrada. Vos estás hablando de Potencia eléctrica, en términos físicos.
