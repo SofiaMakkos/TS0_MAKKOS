@@ -46,3 +46,13 @@ Correcciones de las TSs
       amplificación de amplitud, aunque no así de potencia (algo similar a lo que sucede en un transformador)." 
       Guarda! Tenés que explicar un poco más, porque la señal de salida (en la frecuencia de resonancia) sí tiene más 
       potencia que la señal de entrada. Vos estás hablando de Potencia eléctrica, en términos físicos.
+
+* TS7: Filtros Digitales
+    * El eje vertical de los primeros gráficos de las señales ECG en el dominio del tiempo, no tienen una etiqueta 
+      correcta. Amplitud son los valores extremos de la señal.
+    * Los valores en unidades de microvolts no parece que sean correctos.
+    * En el eje horizontal de los gráficos de la señal ECG en el dominio del tiempo, hubiese sido más adecuado 
+      expresar los valores en unidades de tiempo físico: segundos o microsegundos. 
+    * En la conclusión faltó definir con qué filtro se quedarían y dar un poco las razones de tal elección. 
+    * Hay muchos errores de edición. 
+      
